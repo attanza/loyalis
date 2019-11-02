@@ -1,0 +1,33 @@
+@layout('emails.master')
+@section('content')
+<div class="content">
+  <h3> Hello {{ tocologist.name }} </h3>
+  <p>
+    Reservasi telah diperbaharui
+    <ul>
+      <li>Nama: {{ user.first_name || '' }} {{ user.last_name || ''}}</li>
+      <li>Email: {{ user.email }}</li>
+      <li>Telepon: {{ user.phone }}</li>
+    </ul>
+    <br>
+    Detail:
+    <ul>
+      <li>No Reservasi: {{ code }}</li>
+      <li>Tanggal: {{ date_string }}</li>
+      <li>Jam: {{ time_string }}</li>
+      <li>Status: {{ status }}</li>
+      <li>
+        Layanan:
+        <ul>
+          @each(service in services)
+            <li> {{ service.service.name }} </li>
+          @endeach
+        </ul>
+      </li>
+    </ul>
+  </p>
+  <p>
+    Terimakasih
+  </p>
+</div>
+@endsection

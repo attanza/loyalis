@@ -1,0 +1,27 @@
+@layout('emails.master')
+@section('content')
+<div class="content">
+ <h3> Hello {{ user.name || user.email }} </h3>
+  <p>
+    Terimakasih anda telah melakukan Reservasi baru, dengan detail:
+    <br>
+    <ul>
+      <li>Bidan: {{ tocologist.name }}</li>
+      <li>No Reservasi: {{ code }}</li>
+      <li>Tanggal: {{ date_string }}</li>
+      <li>Jam: {{ time_string }}</li>
+      <li>
+        Layanan:
+        <ul>
+          @each(service in services)
+            <li> {{ service.service.name }} </li>
+          @endeach
+        </ul>
+      </li>
+    </ul>
+  </p>
+  <p>
+    Terimakasih
+  </p>
+</div>
+@endsection
